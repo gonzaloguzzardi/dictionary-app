@@ -1,4 +1,4 @@
-package com.guzzardi.dictionary_app
+package com.guzzardi.dictionaryapp
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
