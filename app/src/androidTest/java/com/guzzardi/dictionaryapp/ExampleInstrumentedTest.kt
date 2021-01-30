@@ -1,4 +1,4 @@
-package com.guzzardi.dictionary_app
+package com.guzzardi.dictionaryapp
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry

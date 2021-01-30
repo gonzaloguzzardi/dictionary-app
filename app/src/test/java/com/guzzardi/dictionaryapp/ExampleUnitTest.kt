@@ -1,4 +1,4 @@
-package com.guzzardi.dictionary_app
+package com.guzzardi.dictionaryapp
 
 import org.junit.Assert.assertEquals
 import org.junit.Test
