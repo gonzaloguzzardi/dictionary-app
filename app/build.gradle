@@ -93,6 +93,8 @@ dependencies {
     testImplementation "androidx.test:core:$testCoreVersion"
     testImplementation "org.mockito:mockito-core:$mockitoVersion"
     testImplementation "org.robolectric:robolectric:$robolectricVersion"
+    kaptTest "com.google.dagger:hilt-android-compiler:$hiltVersion"
+    testImplementation "com.google.dagger:hilt-android-testing:$hiltVersion"
 
     androidTestImplementation "androidx.test.ext:junit:$testExtJUnitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoCoreVersion"
