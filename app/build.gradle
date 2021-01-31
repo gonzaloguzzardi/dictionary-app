@@ -30,12 +30,16 @@ android {
             minifyEnabled false
             shrinkResources false
             debuggable true
+
+            buildConfigField "String", "RAPID_API_KEY", "\"" + getRapidApiKey() + "\""
         }
         release {
             minifyEnabled true
             shrinkResources true
             debuggable false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            buildConfigField "String", "RAPID_API_KEY", "\"" + getRapidApiKey() + "\""
         }
     }
     compileOptions {
@@ -51,9 +55,17 @@ android {
     }
 }
 
+static def getRapidApiKey() {
+    Properties props = new Properties()
+    props.load(new FileInputStream(new File('secrets.properties')))
+    return props['RAPID_API_KEY']
+}
+
 dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
+
     implementation "com.google.android.material:material:$materialVersion"
 
     implementation "androidx.core:core-ktx:$coreKtxVersion"
@@ -62,6 +74,9 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
+
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
 
     // Debug dependencies
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakCanaryVersion"
