@@ -56,9 +56,9 @@ android {
     }
 }
 
-static def getRapidApiKey() {
+def getRapidApiKey() {
     Properties props = new Properties()
-    props.load(new FileInputStream(new File('secrets.properties')))
+    props.load(new FileInputStream(new File("${project.rootDir}/secrets.properties")))
     return props['RAPID_API_KEY']
 }
 
