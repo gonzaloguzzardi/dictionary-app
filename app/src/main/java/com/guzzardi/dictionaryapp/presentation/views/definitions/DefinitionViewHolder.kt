@@ -1,10 +1,9 @@
 package com.guzzardi.dictionaryapp.presentation.views.definitions
 
 import android.view.LayoutInflater
-import android.view.View.GONE
-import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.guzzardi.dictionaryapp.R
 import com.guzzardi.dictionaryapp.data.DefinitionItemDto
 import com.guzzardi.dictionaryapp.databinding.ViewHolderDefinitionBinding
 import com.guzzardi.dictionaryapp.presentation.utils.setTextOrGone
@@ -30,15 +29,17 @@ class DefinitionViewHolder(binding: ViewHolderDefinitionBinding) :
     val upVotes = binding.upVotesText
     val downVotes = binding.downVotesText
 
-    fun bind(data: DefinitionItemDto?) {
-        if (data != null) {
-            itemView.visibility = VISIBLE
-            definitionText.setTextOrGone(data.definition)
-            authorText.setTextOrGone(data.author)
-            upVotes.setTextOrGone(data.thumbsUp?.toString() ?: DEFAULT_VOTES_VALUE)
-            downVotes.setTextOrGone(data.thumbsDown?.toString() ?: DEFAULT_VOTES_VALUE)
-        } else {
-            itemView.visibility = GONE
-        }
+    fun bind(data: DefinitionItemDto) {
+        definitionText.setTextOrGone(data.definition)
+        authorText.setTextOrGone(createAuthorText(data.author))
+        upVotes.setTextOrGone(data.thumbsUp?.toString() ?: DEFAULT_VOTES_VALUE)
+        downVotes.setTextOrGone(data.thumbsDown?.toString() ?: DEFAULT_VOTES_VALUE)
+    }
+
+    private fun createAuthorText(author: String?): String? {
+        if (author.isNullOrBlank()) return null
+
+        val prefix = itemView.resources.getString(R.string.text_view_definition_author_prefix)
+        return "$prefix $author"
     }
 }
