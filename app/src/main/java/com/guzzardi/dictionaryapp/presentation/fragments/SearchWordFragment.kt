@@ -1,4 +1,4 @@
-package com.guzzardi.dictionaryapp.ui.activities
+package com.guzzardi.dictionaryapp.presentation.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -17,10 +17,6 @@ class SearchWordFragment : Fragment() {
     ): View? {
         binding = SearchWordFragmentBinding.inflate(inflater, container, false)
         return binding?.root
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
     }
 
     override fun onDestroyView() {
