@@ -12,12 +12,3 @@ fun TextView.setTextOrGone(value: String?) {
         text = value
     }
 }
-
-fun TextView.setTextOrGone(value: Int?) {
-    if (value == null) {
-        visibility = GONE
-    } else {
-        visibility = VISIBLE
-        text = value.toString()
-    }
-}

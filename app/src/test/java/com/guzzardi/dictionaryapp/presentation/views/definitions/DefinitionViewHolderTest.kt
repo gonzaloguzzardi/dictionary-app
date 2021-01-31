@@ -1,22 +1,14 @@
 package com.guzzardi.dictionaryapp.presentation.views.definitions
 
-import android.content.Context
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.FrameLayout
-import androidx.test.core.app.ApplicationProvider
 import com.guzzardi.dictionaryapp.data.DefinitionItemDto
+import com.guzzardi.dictionaryapp.presentation.RobolectricTest
 import org.junit.Assert
 import org.junit.Test
-import org.junit.runner.RunWith
-import org.robolectric.RobolectricTestRunner
-import org.robolectric.annotation.Config
 
-@RunWith(RobolectricTestRunner::class)
-@Config(application = TestApplication::class)
-class DefinitionViewHolderTest {
-
-    private val context = ApplicationProvider.getApplicationContext<Context>()
+class DefinitionViewHolderTest: RobolectricTest() {
 
     @Test
     fun `bind correctly displays definition text value`() {

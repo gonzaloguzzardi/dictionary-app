@@ -1,4 +1,4 @@
-package com.guzzardi.dictionaryapp.presentation.views.definitions
+package com.guzzardi.dictionaryapp.presentation
 
 import android.app.Application
 import com.guzzardi.dictionaryapp.R
