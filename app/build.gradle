@@ -4,6 +4,7 @@ plugins {
 }
 
 apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion 30
@@ -62,9 +63,11 @@ static def getRapidApiKey() {
 }
 
 dependencies {
-
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
+
+    kapt "com.google.dagger:hilt-android-compiler:$hiltVersion"
+    implementation "com.google.dagger:hilt-android:$hiltVersion"
 
     implementation "com.google.android.material:material:$materialVersion"
 
@@ -77,9 +80,12 @@ dependencies {
 
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okHttp3Version"
 
     // Debug dependencies
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakCanaryVersion"
+    debugImplementation "com.facebook.stetho:stetho:$stethoVersion"
+    debugImplementation "com.facebook.stetho:stetho-okhttp3:$stethoVersion"
 
     // Test dependencies
     testImplementation "junit:junit:$jUnitVersion"

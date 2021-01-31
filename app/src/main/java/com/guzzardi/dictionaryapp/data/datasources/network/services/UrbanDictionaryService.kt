@@ -1,4 +1,4 @@
-package com.guzzardi.dictionaryapp.data.datasources.network
+package com.guzzardi.dictionaryapp.data.datasources.network.services
 
 import com.guzzardi.dictionaryapp.BuildConfig
 import com.guzzardi.dictionaryapp.data.model.DefinitionItemDto
