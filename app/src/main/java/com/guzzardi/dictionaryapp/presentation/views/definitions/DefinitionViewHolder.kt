@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.guzzardi.dictionaryapp.R
-import com.guzzardi.dictionaryapp.data.DefinitionItemDto
+import com.guzzardi.dictionaryapp.data.model.DefinitionItemDto
 import com.guzzardi.dictionaryapp.databinding.ViewHolderDefinitionBinding
 import com.guzzardi.dictionaryapp.presentation.utils.setTextOrGone
 

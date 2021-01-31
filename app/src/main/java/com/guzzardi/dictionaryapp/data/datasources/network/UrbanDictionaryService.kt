@@ -1,7 +1,7 @@
 package com.guzzardi.dictionaryapp.data.datasources.network
 
 import com.guzzardi.dictionaryapp.BuildConfig
-import com.guzzardi.dictionaryapp.data.DefinitionItemDto
+import com.guzzardi.dictionaryapp.data.model.DefinitionItemDto
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Query

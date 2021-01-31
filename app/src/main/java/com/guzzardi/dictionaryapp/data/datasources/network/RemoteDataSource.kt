@@ -1,7 +1,7 @@
 package com.guzzardi.dictionaryapp.data.datasources.network
 
-import com.guzzardi.dictionaryapp.data.DefinitionItemDto
 import com.guzzardi.dictionaryapp.data.datasources.DataSource
+import com.guzzardi.dictionaryapp.data.model.DefinitionItemDto
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

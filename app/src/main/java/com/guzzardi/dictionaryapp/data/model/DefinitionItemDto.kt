@@ -1,4 +1,4 @@
-package com.guzzardi.dictionaryapp.data
+package com.guzzardi.dictionaryapp.data.model
 
 data class DefinitionItemDto(
     val definition: String?,
