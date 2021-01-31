@@ -16,8 +16,4 @@ class DefinitionsRecyclerView(context: Context, attrs: AttributeSet? = null) :
         val itemDecorator = DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL)
         addItemDecoration(itemDecorator)
     }
-
-    fun setData() {
-        adapter = DefinitionsAdapter()
-    }
 }
