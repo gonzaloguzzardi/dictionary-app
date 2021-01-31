@@ -15,5 +15,5 @@ class DefinitionsAdapter(private val definitions: List<DefinitionItemDto>) :
         (holder as DefinitionViewHolder).bind(postItem)
     }
 
-    override fun getItemCount() = 0
+    override fun getItemCount() = definitions.size
 }

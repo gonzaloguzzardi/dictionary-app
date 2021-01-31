@@ -32,8 +32,8 @@ class DefinitionViewHolder(binding: ViewHolderDefinitionBinding) :
     fun bind(data: DefinitionItemDto) {
         definitionText.setTextOrGone(data.definition)
         authorText.setTextOrGone(createAuthorText(data.author))
-        upVotes.setTextOrGone(data.thumbsUp?.toString() ?: DEFAULT_VOTES_VALUE)
-        downVotes.setTextOrGone(data.thumbsDown?.toString() ?: DEFAULT_VOTES_VALUE)
+        upVotes.setTextOrGone(data.upVotes?.toString() ?: DEFAULT_VOTES_VALUE)
+        downVotes.setTextOrGone(data.downVotes?.toString() ?: DEFAULT_VOTES_VALUE)
     }
 
     private fun createAuthorText(author: String?): String? {

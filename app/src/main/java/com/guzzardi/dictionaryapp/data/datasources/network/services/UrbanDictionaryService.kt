@@ -1,7 +1,7 @@
 package com.guzzardi.dictionaryapp.data.datasources.network.services
 
 import com.guzzardi.dictionaryapp.BuildConfig
-import com.guzzardi.dictionaryapp.data.model.DefinitionItemDto
+import com.guzzardi.dictionaryapp.data.model.DefinitionsApiResponse
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Query
@@ -14,5 +14,5 @@ interface UrbanDictionaryService {
         "useQueryString: true"
     )
     @GET("/define")
-    suspend fun getDefinitionForWord(@Query("term") word: String): List<DefinitionItemDto>
+    suspend fun getDefinitionForWord(@Query("term") word: String): DefinitionsApiResponse
 }

@@ -1,13 +1,13 @@
 package com.guzzardi.dictionaryapp.data.repositories
 
 import com.guzzardi.dictionaryapp.data.datasources.DataSource
-import com.guzzardi.dictionaryapp.data.model.DefinitionItemDto
+import com.guzzardi.dictionaryapp.data.model.DefinitionsApiResponse
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class DefinitionsRepository @Inject constructor(private val remoteDataSource: DataSource) {
 
-    fun getDefinitionForWord(word: String): Flow<List<DefinitionItemDto>> {
+    fun getDefinitionsForWord(word: String): Flow<DefinitionsApiResponse> {
         return remoteDataSource.fetchDefinitionsForWord(word)
     }
 }
