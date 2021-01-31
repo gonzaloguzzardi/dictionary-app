@@ -17,6 +17,12 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    buildFeatures {
+        viewBinding = true
     }
 
     buildTypes {
@@ -39,21 +45,33 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    testOptions {
+        unitTests.includeAndroidResources = true
+    }
 }
 
 dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+    implementation "com.google.android.material:material:$materialVersion"
+
     implementation "androidx.core:core-ktx:$coreKtxVersion"
     implementation "androidx.appcompat:appcompat:$appCompatVersion"
-    implementation "com.google.android.material:material:$materialVersion"
     implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
 
     // Debug dependencies
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakCanaryVersion"
 
     // Test dependencies
     testImplementation "junit:junit:$jUnitVersion"
+    testImplementation "androidx.test:core:$testCoreVersion"
+    testImplementation "org.mockito:mockito-core:$mockitoVersion"
+    testImplementation "org.robolectric:robolectric:$robolectricVersion"
+
     androidTestImplementation "androidx.test.ext:junit:$testExtJUnitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoCoreVersion"
 }
