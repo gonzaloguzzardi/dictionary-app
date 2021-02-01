@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="@dimen/app_margin"
+    android:layout_marginTop="@dimen/app_margin"
+    android:layout_marginEnd="@dimen/app_margin"
+    android:layout_marginStart="@dimen/app_margin"
     tools:context=".presentation.fragments.SearchWordFragment">
 
     <EditText
@@ -106,7 +108,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_view_results_word_title"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0" />
 
     <androidx.core.widget.ContentLoadingProgressBar
         android:id="@+id/loading_progress_bar"
