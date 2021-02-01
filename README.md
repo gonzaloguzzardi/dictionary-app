@@ -44,12 +44,6 @@ Min API level is set to [`21`](https://android-arsenal.com/api?level=21)
 * Gradle
     * [Detekt](https://github.com/arturbosch/detekt#with-gradle)
 
-## Architecture
-
-<p align="center">
-  <img src="https://github.com/gonzaloguzzardi/android-clean-arquitecture/blob/main/assets/clean-arquitecture-image.png?raw=true" width="450" />
-</p>
-
 ## Getting started
 To open this project follow any of the next steps:
 ### Android Studio 4.1
