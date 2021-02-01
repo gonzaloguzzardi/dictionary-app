@@ -17,7 +17,7 @@ android {
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "com.example.android.dagger.CustomTestRunner"
 
         vectorDrawables.useSupportLibrary = true
     }
@@ -96,6 +96,8 @@ dependencies {
     kaptTest "com.google.dagger:hilt-android-compiler:$hiltVersion"
     testImplementation "com.google.dagger:hilt-android-testing:$hiltVersion"
 
+    androidTestImplementation "com.google.dagger:hilt-android-testing:$hiltVersion"
     androidTestImplementation "androidx.test.ext:junit:$testExtJUnitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoCoreVersion"
+    androidTestImplementation "androidx.fragment:fragment-testing:$fragmentTestVersion"
 }
