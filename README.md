@@ -1,5 +1,5 @@
 # MVVM Urban Dictionary
-Simple app to fetch words using Urgan Dictionary API using MVVM
+Simple app to fetch words using Urban Dictionary API using MVVM
 
 [![Kotlin Version](https://img.shields.io/badge/Kotlin-1.4.20-blue.svg)](https://kotlinlang.org)
 [![AGP](https://img.shields.io/badge/AGP-4.1.2-blue?style=flat)](https://developer.android.com/studio/releases/gradle-plugin)
@@ -25,7 +25,7 @@ Require Android Studio 4.1
 
 ## Tech-stack
 
-<img src="assets/app-gif.gif" width="280" align="right" hspace="20">
+<img src="assets/demo-gif.gif" width="280" align="right" hspace="20">
 
 Min API level is set to [`21`](https://android-arsenal.com/api?level=21)
 
