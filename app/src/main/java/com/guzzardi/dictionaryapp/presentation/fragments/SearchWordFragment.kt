@@ -23,6 +23,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
+@Suppress("TooManyFunctions")
 class SearchWordFragment : Fragment() {
 
     private val searchWordViewModel: SearchWordViewModel by viewModels()
@@ -131,7 +132,7 @@ class SearchWordFragment : Fragment() {
                     searchWordViewModel.sortResults(sortType)
                 }
 
-                override fun onNothingSelected(adapterView: AdapterView<*>?) {}
+                override fun onNothingSelected(adapterView: AdapterView<*>?) { /* No-op. */ }
             }
         }
     }

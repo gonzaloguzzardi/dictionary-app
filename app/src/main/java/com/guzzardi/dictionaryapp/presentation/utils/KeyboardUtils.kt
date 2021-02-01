@@ -5,7 +5,7 @@ import android.content.Context
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 
-class KeyboardUtils {
+sealed class KeyboardUtils {
     companion object {
         fun hideKeyboardFrom(context: Context, view: View) {
             val imm: InputMethodManager =
