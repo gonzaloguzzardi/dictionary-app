@@ -6,12 +6,21 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo.IME_ACTION_DONE
+import android.view.inputmethod.EditorInfo.IME_ACTION_NEXT
+import android.widget.AdapterView
+import android.widget.AdapterView.OnItemSelectedListener
+import android.widget.TextView.OnEditorActionListener
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.guzzardi.dictionaryapp.R
 import com.guzzardi.dictionaryapp.databinding.SearchWordFragmentBinding
+import com.guzzardi.dictionaryapp.presentation.utils.KeyboardUtils
 import com.guzzardi.dictionaryapp.viewmodels.SearchWordViewModel
+import com.guzzardi.dictionaryapp.viewmodels.sorting.SortType
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class SearchWordFragment : Fragment() {
@@ -38,11 +47,12 @@ class SearchWordFragment : Fragment() {
         subscribeDefinitionsChanges()
         setUpInputEditText()
         setUpSearchButton()
+        setUpSortOptionsSpinner()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        binding?.inputEditTextSearchWord?.text?.let { queryWord ->
+        binding?.editTextSearchWord?.text?.let { queryWord ->
             outState.putString(SAVED_SEARCHED_WORD, queryWord.toString())
         }
     }
@@ -76,15 +86,52 @@ class SearchWordFragment : Fragment() {
     }
 
     private fun setUpSearchButton() {
-        binding?.searchButton?.setOnClickListener {
-            loadDefinitions()
+        binding?.searchButton?.apply {
+            isEnabled = !binding?.editTextSearchWord?.text.isNullOrBlank()
+            setOnClickListener {
+                setResultsTitle(binding?.editTextSearchWord?.text.toString())
+                loadDefinitions()
+                closeKeyboard()
+            }
         }
     }
 
     private fun setUpInputEditText() {
         binding?.run {
-            inputEditTextSearchWord.addTextChangedListener {
-                searchButton.isEnabled = !inputEditTextSearchWord.text.isNullOrBlank()
+            editTextSearchWord.addTextChangedListener {
+                searchButton.isEnabled = !editTextSearchWord.text.isNullOrBlank()
+            }
+
+            editTextSearchWord.setImeActionLabel(
+                resources.getString(R.string.action_search),
+                IME_ACTION_DONE
+            )
+            editTextSearchWord.setOnEditorActionListener(OnEditorActionListener { _, actionId, event ->
+                if (actionId == IME_ACTION_DONE || actionId == IME_ACTION_NEXT) {
+                    loadDefinitions()
+                    closeKeyboard()
+                    return@OnEditorActionListener true
+                }
+                false
+            })
+        }
+    }
+
+    private fun setUpSortOptionsSpinner() {
+        binding?.run {
+            resultsSortSpinner.onItemSelectedListener = object : OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    v: View?,
+                    position: Int,
+                    arg3: Long
+                ) {
+                    val sortType = SortType.fromInt(position)
+                    searchWordViewModel.sortType = sortType
+                    searchWordViewModel.sortResults(sortType)
+                }
+
+                override fun onNothingSelected(adapterView: AdapterView<*>?) {}
             }
         }
     }
@@ -108,11 +155,8 @@ class SearchWordFragment : Fragment() {
     }
 
     private fun loadDefinitions() {
-        binding?.run {
-            val queryText = inputEditTextSearchWord.text.toString()
-            setResultsTitle(queryText)
-            searchWordViewModel.getDefinitionsForWord(queryText)
-        }
+        val queryText = binding?.editTextSearchWord?.text.toString()
+        searchWordViewModel.getDefinitionsForWord(queryText)
     }
 
     private fun setResultsTitle(word: String) {
@@ -120,6 +164,12 @@ class SearchWordFragment : Fragment() {
             textViewSearchTitlePrefix.visibility = VISIBLE
             textViewResultsWordTitle.visibility = VISIBLE
             textViewResultsWordTitle.text = word
+        }
+    }
+
+    private fun closeKeyboard() {
+        binding?.editTextSearchWord?.let { view ->
+            context?.let { KeyboardUtils.hideKeyboardFrom(it, view) }
         }
     }
 }

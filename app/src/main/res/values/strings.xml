@@ -4,4 +4,12 @@
     <string name="text_view_definition_author_prefix">By</string>
     <string name="action_search">Search</string>
     <string name="text_view_results_title_prefix">Results for:</string>
+    <string name="sort_optins_title">Sort results by</string>
+
+    <string-array name="sort_options">
+        <item>most upvoted</item>
+        <item>least upvoted</item>
+        <item>most downvoted</item>
+        <item>least downvoted</item>
+    </string-array>
 </resources>
