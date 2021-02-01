@@ -1,4 +1,4 @@
-package com.guzzardi.dictionaryapp.data.datasources.di
+package com.guzzardi.dictionaryapp.di
 
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.guzzardi.dictionaryapp.BuildConfig
