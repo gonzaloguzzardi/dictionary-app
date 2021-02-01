@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="@dimen/app_margin"
+    android:layout_marginTop="@dimen/app_margin"
+    android:layout_marginEnd="@dimen/app_margin"
+    android:layout_marginStart="@dimen/app_margin"
     tools:context=".presentation.fragments.SearchWordFragment">
 
     <EditText
@@ -51,8 +53,8 @@
         android:id="@+id/results_sort_spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="@dimen/spinner_results_margin_start"
+        android:layout_marginTop="@dimen/spinner_results_margin_top"
         android:entries="@array/sort_options"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -82,7 +84,7 @@
         android:id="@+id/text_view_results_word_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
+        android:layout_marginStart="@dimen/text_view_results_word_title_margin_start"
         android:layout_marginTop="@dimen/search_title_margin_top"
         android:textSize="@dimen/text_size_medium"
         android:textStyle="bold"
@@ -103,9 +105,10 @@
         android:layout_marginTop="@dimen/search_result_container_margin_top"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_view_results_word_title"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0" />
 
     <androidx.core.widget.ContentLoadingProgressBar
         android:id="@+id/loading_progress_bar"
