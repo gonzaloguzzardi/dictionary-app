@@ -43,6 +43,9 @@ Min API level is set to [`21`](https://android-arsenal.com/api?level=21)
     * [Unit Tests](https://en.wikipedia.org/wiki/Unit_testing) ([JUnit](https://junit.org/junit4/))
 * Gradle
     * [Detekt](https://github.com/arturbosch/detekt#with-gradle)
+* Debugging
+   * [LeakCanary](https://github.com/square/leakcanarye)
+   * [Stetho](https://github.com/facebookarchive/stetho)
 
 ## Getting started
 To open this project follow any of the next steps:
