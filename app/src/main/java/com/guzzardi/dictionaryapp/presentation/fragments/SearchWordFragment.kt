@@ -105,7 +105,7 @@ class SearchWordFragment : Fragment() {
                 resources.getString(R.string.action_search),
                 IME_ACTION_DONE
             )
-            editTextSearchWord.setOnEditorActionListener(OnEditorActionListener { _, actionId, event ->
+            editTextSearchWord.setOnEditorActionListener(OnEditorActionListener { _, actionId, _ ->
                 if (actionId == IME_ACTION_DONE || actionId == IME_ACTION_NEXT) {
                     loadDefinitions()
                     return@OnEditorActionListener true
