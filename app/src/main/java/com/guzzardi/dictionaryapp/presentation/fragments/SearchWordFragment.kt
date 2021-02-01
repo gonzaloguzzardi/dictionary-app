@@ -90,9 +90,7 @@ class SearchWordFragment : Fragment() {
         binding?.searchButton?.apply {
             isEnabled = !binding?.editTextSearchWord?.text.isNullOrBlank()
             setOnClickListener {
-                setResultsTitle(binding?.editTextSearchWord?.text.toString())
                 loadDefinitions()
-                closeKeyboard()
             }
         }
     }
@@ -110,7 +108,6 @@ class SearchWordFragment : Fragment() {
             editTextSearchWord.setOnEditorActionListener(OnEditorActionListener { _, actionId, event ->
                 if (actionId == IME_ACTION_DONE || actionId == IME_ACTION_NEXT) {
                     loadDefinitions()
-                    closeKeyboard()
                     return@OnEditorActionListener true
                 }
                 false
@@ -158,6 +155,8 @@ class SearchWordFragment : Fragment() {
     private fun loadDefinitions() {
         val queryText = binding?.editTextSearchWord?.text.toString()
         searchWordViewModel.getDefinitionsForWord(queryText)
+        setResultsTitle(queryText)
+        closeKeyboard()
     }
 
     private fun setResultsTitle(word: String) {
@@ -170,7 +169,7 @@ class SearchWordFragment : Fragment() {
 
     private fun closeKeyboard() {
         binding?.editTextSearchWord?.let { view ->
-            context?.let { KeyboardUtils.hideKeyboardFrom(it, view) }
+            context?.let { KeyboardUtils.hideKeyboardFrom(it.applicationContext, view) }
         }
     }
 }
