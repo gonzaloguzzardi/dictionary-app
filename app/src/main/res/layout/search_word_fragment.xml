@@ -7,48 +7,76 @@
     android:layout_margin="@dimen/app_margin"
     tools:context=".presentation.fragments.SearchWordFragment">
 
-    <EditText
-        android:id="@+id/edit_tex_search_word"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="@string/edit_text_search_word"
-        android:importantForAutofill="no"
-        android:inputType="textAutoCorrect|textCapSentences"
-        android:maxLines="1"
-        android:ellipsize="end"
+        android:background="@null"
+        app:boxBackgroundColor="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:layout_constraintWidth_percent="0.8"/>
+        app:layout_constraintWidth_percent="0.6">
 
-    <ImageButton
-        android:layout_width="wrap_content"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_edit_text_search_word"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:hint="@string/edit_text_search_word"
+            android:importantForAutofill="no"
+            android:inputType="textAutoCorrect|textCapSentences"
+            android:maxLines="1" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/search_button"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="?android:selectableItemBackgroundBorderless"
-        android:contentDescription="@string/button_sort_content_description"
-        app:layout_constraintBottom_toBottomOf="@+id/edit_tex_search_word"
+        android:layout_marginHorizontal="@dimen/search_button_margin_horizontal"
+        android:text="@string/action_search"
+        app:layout_constraintBottom_toBottomOf="@+id/text_input_layout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/edit_tex_search_word"
-        app:layout_constraintTop_toTopOf="@id/edit_tex_search_word"
-        app:srcCompat="@drawable/ic_sort" />
+        app:layout_constraintStart_toEndOf="@+id/text_input_layout"
+        app:layout_constraintTop_toTopOf="@id/text_input_layout" />
 
     <TextView
-        android:id="@+id/text_view_search_title"
+        android:id="@+id/text_view_search_title_prefix"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/search_title_margin_top"
+        android:text="@string/text_view_results_title_prefix"
         android:textSize="@dimen/text_size_medium"
-        android:textStyle="bold"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_tex_search_word"
+        app:layout_constraintTop_toBottomOf="@+id/text_input_layout"
         app:layout_constraintVertical_bias="0.0"
-        tools:text="Search Word" />
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/text_view_results_word_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="@dimen/search_title_margin_top"
+        android:textSize="@dimen/text_size_medium"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/text_view_search_title_prefix"
+        app:layout_constraintTop_toBottomOf="@+id/text_input_layout"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="Search Word"
+        tools:visibility="visible" />
 
     <com.guzzardi.dictionaryapp.presentation.views.definitions.DefinitionsRecyclerView
         android:id="@+id/definitions_recycler_view"
@@ -58,10 +86,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_search_title" />
+        app:layout_constraintTop_toBottomOf="@+id/text_view_results_word_title" />
 
     <androidx.core.widget.ContentLoadingProgressBar
         android:id="@+id/loading_progress_bar"
+        style="@style/Widget.AppCompat.ProgressBar"
         android:layout_width="@dimen/search_progress_bar_size"
         android:layout_height="@dimen/search_progress_bar_size"
         android:layout_gravity="center_horizontal"
@@ -70,6 +99,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/definitions_recycler_view"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
