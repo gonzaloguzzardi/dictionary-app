@@ -4,6 +4,7 @@ plugins {
 }
 
 apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion 30
@@ -30,12 +31,16 @@ android {
             minifyEnabled false
             shrinkResources false
             debuggable true
+
+            buildConfigField "String", "RAPID_API_KEY", "\"" + getRapidApiKey() + "\""
         }
         release {
             minifyEnabled true
             shrinkResources true
             debuggable false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            buildConfigField "String", "RAPID_API_KEY", "\"" + getRapidApiKey() + "\""
         }
     }
     compileOptions {
@@ -51,9 +56,19 @@ android {
     }
 }
 
-dependencies {
+def getRapidApiKey() {
+    Properties props = new Properties()
+    props.load(new FileInputStream(new File("${project.rootDir}/secrets.properties")))
+    return props['RAPID_API_KEY']
+}
 
+dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
+
+    kapt "com.google.dagger:hilt-android-compiler:$hiltVersion"
+    implementation "com.google.dagger:hilt-android:$hiltVersion"
+
     implementation "com.google.android.material:material:$materialVersion"
 
     implementation "androidx.core:core-ktx:$coreKtxVersion"
@@ -62,6 +77,13 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
+
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okHttp3Version"
+    implementation "com.facebook.stetho:stetho:$stethoVersion"
+    implementation "com.facebook.stetho:stetho-okhttp3:$stethoVersion"
 
     // Debug dependencies
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakCanaryVersion"
@@ -71,6 +93,8 @@ dependencies {
     testImplementation "androidx.test:core:$testCoreVersion"
     testImplementation "org.mockito:mockito-core:$mockitoVersion"
     testImplementation "org.robolectric:robolectric:$robolectricVersion"
+    kaptTest "com.google.dagger:hilt-android-compiler:$hiltVersion"
+    testImplementation "com.google.dagger:hilt-android-testing:$hiltVersion"
 
     androidTestImplementation "androidx.test.ext:junit:$testExtJUnitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoCoreVersion"

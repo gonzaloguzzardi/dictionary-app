@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.guzzardi.dictionaryapp.data.model.DefinitionItemDto
 
 class DefinitionsRecyclerView(context: Context, attrs: AttributeSet? = null) :
     RecyclerView(context, attrs) {
@@ -15,5 +16,9 @@ class DefinitionsRecyclerView(context: Context, attrs: AttributeSet? = null) :
         layoutManager = LinearLayoutManager(context)
         val itemDecorator = DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL)
         addItemDecoration(itemDecorator)
+    }
+
+    fun setData(definitions: List<DefinitionItemDto>) {
+        adapter = DefinitionsAdapter(definitions)
     }
 }

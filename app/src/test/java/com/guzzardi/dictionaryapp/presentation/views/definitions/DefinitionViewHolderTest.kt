@@ -3,7 +3,7 @@ package com.guzzardi.dictionaryapp.presentation.views.definitions
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.FrameLayout
-import com.guzzardi.dictionaryapp.data.DefinitionItemDto
+import com.guzzardi.dictionaryapp.data.model.DefinitionItemDto
 import com.guzzardi.dictionaryapp.presentation.RobolectricTest
 import org.junit.Assert
 import org.junit.Test

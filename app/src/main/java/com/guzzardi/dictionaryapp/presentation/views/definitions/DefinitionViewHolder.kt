@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.guzzardi.dictionaryapp.R
-import com.guzzardi.dictionaryapp.data.DefinitionItemDto
+import com.guzzardi.dictionaryapp.data.model.DefinitionItemDto
 import com.guzzardi.dictionaryapp.databinding.ViewHolderDefinitionBinding
 import com.guzzardi.dictionaryapp.presentation.utils.setTextOrGone
 
@@ -32,8 +32,8 @@ class DefinitionViewHolder(binding: ViewHolderDefinitionBinding) :
     fun bind(data: DefinitionItemDto) {
         definitionText.setTextOrGone(data.definition)
         authorText.setTextOrGone(createAuthorText(data.author))
-        upVotes.setTextOrGone(data.thumbsUp?.toString() ?: DEFAULT_VOTES_VALUE)
-        downVotes.setTextOrGone(data.thumbsDown?.toString() ?: DEFAULT_VOTES_VALUE)
+        upVotes.setTextOrGone(data.upVotes?.toString() ?: DEFAULT_VOTES_VALUE)
+        downVotes.setTextOrGone(data.downVotes?.toString() ?: DEFAULT_VOTES_VALUE)
     }
 
     private fun createAuthorText(author: String?): String? {
