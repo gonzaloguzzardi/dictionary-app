@@ -14,4 +14,5 @@
     <dimen name="text_view_results_word_title_margin_start">4dp</dimen>
     <dimen name="spinner_results_margin_top">8dp</dimen>
     <dimen name="spinner_results_margin_start">8dp</dimen>
+    <dimen name="progress_bar_loading_margin_top">16dp</dimen>
 </resources>
